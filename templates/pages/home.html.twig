@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="jumbotron text-center">
+        <h1>Agence Stéphane Plaza</h1>
+        <div class="container mt-4">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat inventore laborum hic laboriosam quos, a, possimus nulla sint, blanditiis nam iure asperiores ad harum aliquam recusandae quidem! Velit, sed tempore!</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Les derniers biens</h2>
+        <div class="row flex mt-4">
+            {% for property in properties %}
+                <div class="col-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{{ path('property.show', {id: property.id, slug: property.slug}) }}">{{ property.title}}</a>  
+                            </h5>
+                            <p class="card-text">{{property.city}} ({{ property.postalCode }})</p>
+                            <div class="text-primary" style="font-weight:bold; font-size:1rem;">{{ property.formattedPrice }} €</div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
